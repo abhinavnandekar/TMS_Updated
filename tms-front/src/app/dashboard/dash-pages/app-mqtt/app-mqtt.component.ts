@@ -20,14 +20,19 @@ export interface DataTable {
   location?: string;
   totalVolume?: string;
   createdAt?: string;
+  // selectedDeviceUID: string;
+
+  // selectedDevice: any;
 }
 
 @Component({
   selector: 'app-app-mqtt',
   templateUrl: './app-mqtt.component.html',
-  styleUrls: ['./app-mqtt.component.css']
+  styleUrls: ['./app-mqtt.component.css'],
+  providers: [DatePipe]
 })
 export class AppMqttComponent implements OnInit {
+  selectedDevice: any;
 
   constructor(private DashDataService: DashDataService,private authService: AuthService, public snackBar: MatSnackBar, private datePipe: DatePipe) { }
 
@@ -42,9 +47,31 @@ export class AppMqttComponent implements OnInit {
   displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<DataTable>();
 
+  
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void> {
     this.getUserDevices();
+
+    let today = new Date();
+    let startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+    // this.start_date.setValue(startDate);
+    // this.end_date.setValue(today);
+    this.start_date.setValue(this.datePipe.transform(startDate, 'yyyy-MM-dd'));
+    this.end_date.setValue(this.datePipe.transform(today, 'yyyy-MM-dd'));
+
+    this.selectedDeviceUID = (this.device_uid.value as { DeviceUID?: string })?.DeviceUID;
+    this.selectedDeviceType = (this.device_uid.value as { DeviceType?: string })?.DeviceType;
+
+    let dataWSPromise, dataPromise;
+
+    if (this.selectedDeviceType === 'ws' || this.selectedDeviceType === 'fs') {
+      dataWSPromise = this.DashDataService.getCustomConsumption(this.selectedDeviceUID, this.start_date.value, this.end_date.value).toPromise();
+    }
+
+    dataPromise = this.DashDataService.DataByCustomDate(this.selectedDeviceUID, this.start_date.value, this.end_date.value).toPromise();
+
+    // Concurrently await all promises
+    const [dataWS, data] = await Promise.all([dataWSPromise, dataPromise]);
   }
   getUserDevices() {
     this.CompanyEmail = this.authService.getCompanyEmail();
@@ -52,6 +79,13 @@ export class AppMqttComponent implements OnInit {
       this.DashDataService.userDevices(this.CompanyEmail).subscribe(
         (devices: any) => {
           this.deviceOptions = devices.devices;
+          if (this.deviceOptions && this.deviceOptions.length > 0) {
+            // this.selectedDeviceUID = this.deviceOptions[0].DeviceUID;
+            // this.selectedDeviceType = this.deviceOptions[0].DeviceType;
+            this.selectedDevice = this.deviceOptions[0]; // set selectedDevice when devices are updated
+            this.selectedDeviceUID = this.deviceOptions[0].DeviceUID;
+            this.selectedDeviceUID = 0;
+          }
         },
         (error) => {
           this.snackBar.open('Error while fetching user devices!', 'Dismiss', {
@@ -83,6 +117,12 @@ export class AppMqttComponent implements OnInit {
       default:
         this.displayedColumns = ['DeviceName', 'DeviceUID', 'Date']; // Default columns
     }
+  }
+
+  dataSave(){
+    sessionStorage.setItem('selectedDevice', JSON.stringify(this.device_uid.value));
+    sessionStorage.setItem('startDate', JSON.stringify(this.start_date.value));
+    sessionStorage.setItem('endDate', JSON.stringify(this.end_date.value));
   }
 
   // Custom validation function for start_date
@@ -135,7 +175,7 @@ export class AppMqttComponent implements OnInit {
   // Function to get the max date for the end date input
   getMaxEndDate() {
     const today = new Date();
-    return today.toISOString().split('T')[0];
+    return today.toISOString().split('T')[0]; 
   }
 
   async fetchData() {
