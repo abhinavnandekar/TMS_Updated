@@ -1,0 +1,220 @@
+<div *ngIf="dashService.pageLoading"><app-page-loading></app-page-loading></div>
+<div *ngIf="!dashService.pageLoading">
+  <section class="users container-fluid">
+    <div class="container-fluid">
+      <div class="row pt-3">
+        <div class="col-lg-2 col-md-4 col-sm-4 mb-2">
+          <mat-card>
+            <mat-card-content>
+              <div class="d-flex">
+                <mat-icon color="primary">group</mat-icon>
+                <div class="user-text ms-auto">
+                  Total users: {{ totalUsers }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 mb-2">
+          <mat-card>
+            <mat-card-content>
+              <div class="d-flex">
+                <mat-icon class="success">account_circle</mat-icon>
+                <div class="user-text ms-auto">
+                  Active Users: {{ totalOnlineUsers }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 mb-2">
+          <mat-card>
+            <mat-card-content>
+              <div class="d-flex">
+                <mat-icon color="warn">account_circle</mat-icon>
+                <div class="user-text ms-auto">
+                  Offline Users: {{ totalOfflineUsers }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 mb-2">
+          <mat-card>
+            <mat-card-content>
+              <div class="d-flex">
+                <mat-icon color="primary">group</mat-icon>
+                <div class="user-text ms-auto">
+                  Total Devices: {{ totalDevices }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 mb-2">
+          <mat-card>
+            <mat-card-content> 
+              <div class="d-flex">
+                <mat-icon class="success">check_circle</mat-icon>
+                <div class="user-text ms-auto">
+                  Active Devices: {{ totalActiveDevices }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 mb-2">
+          <mat-card>
+            <mat-card-content>
+              <div class="d-flex">
+                <mat-icon color="warn">offline_bolt</mat-icon>
+                <div class="user-text ms-auto">
+                  Offline Devices: {{ totalInactiveDevices }}
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-card>
+            <mat-card-header class="d-flex align-items-center justify-content-between mb-2">
+              <div class="flex-grow-1 user-head">Users</div>
+              <button mat-mini-fab color="primary" (click)="openAddUserDialog()"><mat-icon>person_add</mat-icon></button>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="table-container" style="overflow: auto; max-height: calc(60vh - 10vh);">
+                <table mat-table [dataSource]="dataSource" class="mat-table">
+                  <ng-container matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="editUser(element)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" aria-label="Example icon button with a home icon" (click)="deleteUser(element)">
+                        <mat-icon>delete</mat-icon>
+                      </button> 
+                    </td>
+                  </ng-container>
+
+
+                  <ng-container matColumnDef="Name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let element">{{ element.FirstName }} {{ element.LastName }}<br> {{ element.UserType}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Contact">
+                    <th mat-header-cell *matHeaderCellDef>Contact</th>
+                    <td mat-cell *matCellDef="let element">{{ element.PersonalEmail }} <br> {{ element.ContactNo }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Designation">
+                    <th mat-header-cell *matHeaderCellDef>Designation</th>
+                    <td mat-cell *matCellDef="let element">{{ element.Designation }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element" [ngClass]="{'online': element.status === 'Online', 'offline': element.status === 'Offline'}">{{ element.status }}</td>
+                  </ng-container>
+
+                  <!-- Render the table header row -->
+                  <thead>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                  </thead>
+
+                  <!-- Render the table body rows -->
+                  <tbody>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </tbody>
+                </table>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 mb-3">
+          <mat-card>
+            <mat-card-header class="d-flex align-items-center justify-content-between mb-2">
+              <div class="flex-grow-1 user-head">Devices</div>
+              <button mat-mini-fab color="primary" (click)="openAddDeviceDialog()"><mat-icon>add_circle</mat-icon></button>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="table-container" style="overflow: auto; max-height: calc(60vh - 10vh);">
+                <table mat-table [dataSource]="dataSource2" class="mat-table">
+                  <!-- Define your table columns -->
+                  <ng-container matColumnDef="DeviceName">
+                    <th mat-header-cell *matHeaderCellDef>Device</th>
+                    <td mat-cell *matCellDef="let element">{{ element.DeviceName}}<br>{{ element.DeviceUID}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Location">
+                    <th mat-header-cell *matHeaderCellDef>Location</th>
+                    <td mat-cell *matCellDef="let element">{{ element.DeviceLocation}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="IssueDate">
+                    <th mat-header-cell *matHeaderCellDef>Date if Issue</th>
+                    <td mat-cell *matCellDef="let element">{{ element.formattedIssueDate }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element" [ngClass]="{'online': element.Status === 'Online', 'offline': element.Status === 'Offline'}">{{ element.Status }}</td>
+                  </ng-container>
+         
+                  <ng-container matColumnDef="Actions2">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let element">
+                      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="EditDeviceFromSettingComponent(element)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" aria-label="Example icon button with a home icon" (click)="deleteDevice(element)">
+                        <mat-icon>delete</mat-icon>
+                      </button> 
+                    </td>
+                  </ng-container>
+             
+
+            
+
+                  <!-- <ng-container matColumnDef="DeviceType">
+                    <th mat-header-cell *matHeaderCellDef>Device Type</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{ element.DeviceType === 'ryb' ? 'RYB' : (element.DeviceType === 'th' ? 'TH' : 'Temperature') }}
+                    </td>
+                  </ng-container> -->
+                  <ng-container matColumnDef="DeviceType">
+                    <th mat-header-cell *matHeaderCellDef>Device Type</th>
+                    <td mat-cell *matCellDef="let element">
+                      {{
+                          element.DeviceType === 'ryb'
+                          ? 'RYB'
+                          : element.DeviceType === 'th'
+                          ? 'TH'
+                          : element.DeviceType === 'ws'
+                          ? 'Water Sensor'
+                          : element.DeviceType === 'fs'
+                          ? 'Flow Sensor'
+                          : element.DeviceType === 't'
+                          ? 'Temprature'
+                          : "Unknown"
+                      }}
+                    </td>
+                  </ng-container>
+                  <!-- Render the table header row -->
+                  <thead>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2;"></tr>
+                  </thead>
+
+                  <!-- Render the table body rows -->
+                  <tbody>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                  </tbody>
+                </table>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

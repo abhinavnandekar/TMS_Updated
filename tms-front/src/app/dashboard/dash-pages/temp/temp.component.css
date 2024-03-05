@@ -1,0 +1,256 @@
+.cards{
+	padding-top: 13vh;
+	padding-bottom: 5vh;
+}
+
+.card-title-right{
+	text-align: right;
+}
+
+.device-name{
+	font-size: 1rem;
+	font-weight: 550;
+}
+
+.device-time{
+	font-size: 0.8rem;
+	font-style: italic;
+	font-weight: 550;
+}
+
+.card-buttons {
+  width: 30px;
+  height: 30px;
+  font-size: 10px;
+}
+
+.card-buttons mat-icon {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img{
+	height: 50px;
+	width: auto;
+}
+
+.card-img-ryb{
+  height: 40px;
+  width: auto;
+}
+
+.image-text{
+	text-align: center;
+	font-size: 25px;
+	font-weight: 600;
+	justify-content: center;
+	padding-top: 10px;
+}
+
+.image-text-ryb{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  padding-top: 15px;
+  zoom: 78%;
+}
+
+
+.image-text-ws{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  zoom: 78%;
+}
+
+
+.image-text-ws-2{
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  justify-content: center;
+  zoom: 78%;
+}
+
+.image-text-ws-3{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  zoom: 78%;
+}
+
+.live-tag {
+  color: red;
+}
+
+.disconnected-tag {
+  color: #fab907;
+}
+
+.type-text{
+  font-size: 10px;
+}
+
+@media (max-width: 375px) {
+	.device-name{
+		font-size: 0.8rem;
+		font-weight: 550;
+	}
+
+	.device-time{
+		font-size: 0.6rem;
+		font-style: italic;
+		font-weight: 550;
+	}
+
+	.card-img{
+		height: 35px;
+		width: auto;
+	}
+  
+  .card-img-ryb{
+    height: 28px;
+    width: auto;
+  }
+
+	.image-text{
+		text-align: center;
+		font-size: 20px;
+		font-weight: 600;
+		justify-content: center;
+		padding-top: 5px;
+	}
+
+  .image-text-ryb{
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    justify-content: center;
+    padding-top: 4px;
+  }
+
+  .image-text-ws-2{
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    justify-content: center;
+    zoom: 78%;
+  }
+}
+
+@media (min-width: 576px) and (max-width:979px){
+	.cards{
+		padding-top: 17vh;
+	}
+}
+
+@media (min-width: 980px) and (max-width: 1100px) {
+  .cards{
+  	padding-top: 20vh;
+  }
+  .device-name {
+    font-size: 0.8rem;
+    font-weight: 550;
+  }
+
+  .device-time {
+    font-size: 0.6rem;
+    font-style: italic;
+    font-weight: 550;
+  }
+
+  .card-img {
+    height: 35px;
+    width: auto;
+  }
+
+  .card-img-ryb{
+    height: 28px;
+    width: auto;
+  }
+
+  .image-text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center;
+    padding-top: 5px;
+  }
+
+  .image-text-ryb{
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    justify-content: center;
+    padding-top: 4px;
+  }
+
+  .image-text-ws{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center;
+    zoom: 78%;
+  }
+}
+/*----------------------------------------------*/
+.alert-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.alert-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,0,0,0.1) 0%, rgba(255,0,0,0.5) 50%, rgba(255,0,0,0.1) 100%);
+  background-position: 0% 50%;
+  background-repeat: repeat-x;
+  background-size: 200% auto;
+  animation: waveAnimation 2s linear infinite;
+}
+
+.warn-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.warn-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(232, 224, 109, 0.1) 0%, rgba(232, 224, 109, 0.5) 50%, rgba(232, 224, 109, 0.1) 100%);
+  background-position: 0% 50%;
+  background-repeat: repeat-x;
+  background-size: 200% auto;
+  animation: waveAnimation 2s linear infinite;
+}
+
+@keyframes waveAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+.up{
+  color: green;
+}
+
+.down{
+  color: red;
+}

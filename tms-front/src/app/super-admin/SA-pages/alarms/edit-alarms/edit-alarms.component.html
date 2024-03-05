@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row model-head mb-2">
+      <div class="col-lg-12 col-md-12 col-sm-12 pt-1">
+        <div class="model-title">Edit Alarm Trigger</div>
+      </div>
+    </div>
+    <form [formGroup]="AlarmForm" (ngSubmit)="onSubmit()">
+      <div class="col-md-12 mb-2">
+        <mat-form-field class="from-field">
+          <mat-label>Trigger Value</mat-label>
+          <input matInput formControlName="TriggerValue">
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-12 mb-2">
+        <mat-form-field class="from-field">
+          <mat-label>Assignee</mat-label>
+          <input matInput formControlName="assignee">
+        </mat-form-field>
+      </div> -->
+  
+      <div class="col-lg-12 justify-content-end d-flex mb-2">
+        <button mat-raised-button mat-dialog-close class="mx-2">Close</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+  

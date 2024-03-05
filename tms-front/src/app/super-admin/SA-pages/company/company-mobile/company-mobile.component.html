@@ -1,0 +1,38 @@
+<div class="content">
+    <section class="section container-fluid">
+        <div class="row mb-3">
+          <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="notification-card-container">
+              <mat-accordion>
+              <mat-expansion-panel *ngFor="let list of data" class="mb-1">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Device Name: {{ list.dname }}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Unique Id: <strong>{{ list.uniqueid }}</strong>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p><strong>Company Name:</strong> {{ list.Cname }}</p>
+                <p><strong>Location: </strong>{{ list.location }}</p>
+                <p><strong>Status: </strong>{{ list.status }}</p>
+                <p><strong>Modification: </strong>{{ list.modification }}</p>
+                <p>Edit: <button
+                  mat-icon-button
+                  color="secoundry"
+                  aria-label="Example icon button with a home icon">
+                  <mat-icon color="red">edit</mat-icon>
+                </button>    <button
+                mat-icon-button
+                color="secoundry"
+                aria-label="Example icon button with a home icon">
+                <mat-icon color="red">delete</mat-icon>
+              </button>
+              </p>
+              </mat-expansion-panel>
+            </mat-accordion>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>

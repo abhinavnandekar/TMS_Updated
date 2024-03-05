@@ -1,0 +1,67 @@
+  .section {
+    padding-top: 13vh;
+    padding-bottom: 5vh;
+  }
+
+  .notification-title {
+    font-size: 1.2rem;
+    font-weight: 550;
+    padding-bottom: 2px;
+    background: linear-gradient(to right, #216e7a, #3F51B5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .notification-card-container {
+    position: sticky;
+    top: 0;
+    height: calc(80vh - 35px); /* Adjust this value based on your header's height */
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .fixed-card-container {
+    position: sticky;
+    top: 0;
+    height: calc(80vh - 35px); /* Adjust this value based on your header's height */
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .fixed-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    min-height: 100%; /* Fill the available height */
+    display: flex;
+    flex-direction: column; /* Arrange child elements in a column */
+  }
+
+  .fixed-card textarea {
+    flex: 1; /* Fill the remaining available space in the container */
+    margin-bottom: 8px;
+    min-height: 35vh;
+  }
+
+  .fixed-card p {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .read {
+    border-left: 5px solid grey;
+  }
+
+  .unread {
+    border-left: 5px solid blue;
+  }
+
+  .from-field {
+    width: 100%;
+  }

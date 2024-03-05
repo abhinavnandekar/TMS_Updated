@@ -1,0 +1,127 @@
+<div *ngIf="saService.pageLoading"><app-page-loading></app-page-loading></div>
+<div *ngIf="!saService.pageLoading">
+<div class="content">
+ <div class="card">
+  <div class="d-flex justify-content-between mt-2">
+    <div class="col-lg-4 col-md-4 col-sm-4 mt-3 mx-4">
+      <ng-container *ngIf="showSearchInput; else paragraphContent">
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+          <mat-form-field appearance="fill" >
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Enter name" #input>
+          </mat-form-field>
+        <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="hideSearchInput()"  matTooltip="close" >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      </ng-container>
+      <ng-template #paragraphContent>
+        <p class="text-heading">Devices</p>
+      </ng-template>
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-2 d-flex justify-content-around" *ngIf="!showSearchInput">
+      <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="openDialog()" matTooltip="add device">
+        <mat-icon>add</mat-icon>
+      </button>
+      <!-- <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="refreshData()" matTooltip="Refresh">
+        <mat-icon>refresh</mat-icon>
+      </button> -->
+      <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="toggleSearchInput()" matTooltip="Search device">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  
+  
+  <section class="example-container ">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- type Column -->
+    <ng-container matColumnDef="EntryId">
+      <th mat-header-cell *matHeaderCellDef >EntryId</th>
+      <td mat-cell *matCellDef="let row" >{{row.EntryId}}</td>
+    </ng-container>
+
+    <!-- label Column -->
+    <ng-container matColumnDef="DeviceUID">
+      <th mat-header-cell *matHeaderCellDef>DeviceUID</th>
+      <td mat-cell *matCellDef="let row" >{{row.DeviceUID}}</td>
+    </ng-container>
+
+      <!-- label Column -->
+      <ng-container matColumnDef="DeviceLocation">
+        <th mat-header-cell *matHeaderCellDef>DeviceLocation</th>
+        <td mat-cell *matCellDef="let row" >{{row.DeviceLocation}}</td>
+      </ng-container>
+
+      <!-- type Column -->
+      <ng-container matColumnDef="DeviceName">
+        <th mat-header-cell *matHeaderCellDef >DeviceName</th>
+        <td mat-cell *matCellDef="let row" >{{row.DeviceName}}</td>
+      </ng-container>
+
+      <!-- label Column -->
+      <ng-container matColumnDef="CompanyEmail">
+        <th mat-header-cell *matHeaderCellDef>CompanyEmail</th>
+        <td mat-cell *matCellDef="let row" >{{row.CompanyEmail}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CompanyName">
+        <th mat-header-cell *matHeaderCellDef>CompanyName</th>
+        <td mat-cell *matCellDef="let row" >{{row.CompanyName}}</td>
+      </ng-container>
+
+    <!-- company_name Column -->
+    <ng-container matColumnDef="IssueDate">
+      <th mat-header-cell *matHeaderCellDef >IssueDate</th>
+      <td mat-cell *matCellDef="let row" >{{row.IssueDate}}</td>
+    </ng-container>
+
+    <!-- company_location Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Status
+      </th>
+      <td mat-cell *matCellDef="let row" [ngStyle]="getStatusStyle(row.status)" style="font-size: 16px;">
+        {{row.status}}
+      </td>
+    </ng-container>
+
+        <!-- ip col  -->
+    <ng-container matColumnDef="SMS">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear >
+       PhoneNO
+      </th>
+      <td mat-cell *matCellDef="let row" >{{row.SMS}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear >
+        Email
+      </th>
+      <td mat-cell *matCellDef="let row" >{{row.email}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear >
+        Type
+      </th>
+      <td mat-cell *matCellDef="let row" >{{row.type}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear >
+        EndDate
+      </th>
+      <td mat-cell *matCellDef="let row" >{{row.endDate}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+</section>
+ </div>
+</div>
+</div>

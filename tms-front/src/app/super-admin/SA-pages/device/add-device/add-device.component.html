@@ -1,0 +1,86 @@
+<div class="container-fluid">
+	<div class="row model-head mb-2">
+	  <div class="col-lg-12 col-md-12 col-sm-12 pt-1">
+		<div class="model-title">Add Device </div>
+	  </div>
+	</div>
+	<form (ngSubmit)="onSubmit()" class="row">
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Device Name</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.DeviceName" name="DeviceName" required>
+		  <mat-error *ngIf="!formData.DeviceName">Device Name is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Device Trigger</mat-label>
+		  <input matInput type="number" placeholder="35" [(ngModel)]="formData.TriggerValue"  name="TriggerValue" required>
+		  <mat-error *ngIf="!formData.TriggerValue">Device Trigger is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Device Unique Id</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.DeviceUID" name="DeviceUID" required>
+		  <mat-error *ngIf="!formData.DeviceUID">Device Unique ID is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Device Location</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.DeviceLocation" name="DeviceLocation" required >
+		  <mat-error *ngIf="!formData.DeviceLocation">Device Location is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>CompanyEmail</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.CompanyEmail" name="CompanyEmail" required >
+		  <mat-error *ngIf="!formData.CompanyEmail">CompanyEmail is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>PhoneNumber</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.SMS" name="SMS" required>
+		  <mat-error *ngIf="!formData.SMS">PhoneNumber is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Email</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.email" name="email">
+		  <mat-error *ngIf="!formData.email">Email is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>User Type</mat-label>
+		  <mat-select [(ngModel)]="formData.type" name="type">
+			<mat-option value="Admin">Admin</mat-option>
+			<mat-option value="Super Admin">Super Admin</mat-option>
+		  </mat-select>
+		  <mat-error *ngIf="!formData.type">User Type is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  
+	  <div class="col-md-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>CompanyName</mat-label>
+		  <input matInput type="text" [(ngModel)]="formData.CompanyName" name="CompanyName" required>
+		  <mat-error *ngIf="!formData.CompanyName">CompanyName is Required.</mat-error>
+		</mat-form-field>
+	  </div>
+	  <div class="row">
+	  <div class="col-md-6 justify-content-end d-flex mb-2">
+		<button mat-raised-button  mat-dialog-close>Close</button>
+	  </div>
+	  <div class="col-md-6 mb-2">
+		<button mat-raised-button color="primary" (click)="onSubmit()" type="submit"  [mat-dialog-close]="true" >Save</button>
+	  </div>
+	</div>
+	</form>
+  </div>
+  

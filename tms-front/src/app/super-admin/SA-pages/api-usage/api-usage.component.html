@@ -1,0 +1,347 @@
+<div *ngIf="saService.pageLoading"><app-page-loading></app-page-loading></div>
+<div *ngIf="!saService.pageLoading">
+  <div *ngIf="!displayGraphFull1">
+    <div *ngIf="!displayGraphFull2">
+        <div *ngIf="!displayGraphFull3">
+            <div *ngIf="!displayGraphFull4">
+              <div class="content">
+                <!-- <div class="demo-button-container">
+                  <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 mx-auto mt-3 text-hide">
+                      <h1>API Usage</h1>
+                    </div>
+                    <div class="col col-lg-3 col-md-6 col-sm-6 d-flex justify-content-end">
+                      <mat-form-field appearance="fill" class="demo-button">
+                        <mat-label>Search</mat-label>
+                        <input matInput placeholder="Enter name" #input />
+                      </mat-form-field>
+                      <button mat-mini-fab class="demo-button" aria-label="Example icon button with a menu icon"><mat-icon>add</mat-icon></button>
+                      <button mat-mini-fab class="demo-button" aria-label="Example icon button with a menu icon"><mat-icon>filter_list</mat-icon></button>
+                    </div>
+                  </div>
+                </div> -->
+                <div>
+                  <!-- Outer Container -->
+                  <div style="padding-bottom: 5vh">
+                    <!-- Row 1 -->
+                    <div class="row col-lg-12 col-md-12 col-sm-12">
+                      <!-- Column 1 -->
+                      <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                        <mat-card>
+                          <mat-card-header class="d-flex justify-content-around">
+                              <div class="col d-flex justify-content-start">Transport</div>
+                              <div class="col d-flex justify-content-end text-success">Enabled</div>
+                          </mat-card-header>
+                          <mat-card-content>
+                
+                            <!-- Transport Progress Bars -->
+                            <div class="row mt-3">
+                              <!-- Message Progress -->
+                              <div class="col">
+                                Message
+                                <br />
+                                <mat-progress-bar mode="buffer" [value]="progressValue" [bufferValue]="bufferValue" class="custom-progress-bar"></mat-progress-bar>
+                                <p class="d-flex justify-content-end">{{ progressValue }} / {{ bufferValue }}</p>
+                              </div>
+                              <!-- Data Points Progress -->
+                              <div class="col">
+                                Data Points
+                                <br />
+                                <mat-progress-bar mode="buffer" [value]="progressValue" [bufferValue]="bufferValue" class="custom-progress-bar"></mat-progress-bar>
+                                <p class="d-flex justify-content-end">{{ progressValue }} / {{ bufferValue }}</p>
+                              </div>
+                            </div>
+                      
+                            <!-- View Details Button -->
+                            <!-- <div class="row">
+                              <div class="d-flex justify-content-end">
+                                <button mat-raised-button style="background-color: #263238; color: white">View details</button>
+                              </div>
+                            </div> -->
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                        <mat-card>
+                          <mat-card-content class="justify-content-center">
+                            <div class="row">
+                              <div class="col">Rule Engine</div>
+                              <div class="col text-success">Enabled</div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col">
+                                Executions
+                                <br />
+                                <mat-progress-bar mode="buffer" [value]="progressValue" [bufferValue]="bufferValue" color="warning" class="custom-progress-bar"></mat-progress-bar>
+                                <p class="d-flex justify-content-end">{{ progressValue }} / {{ bufferValue }}</p>
+                              </div>
+                            </div>
+               
+                            <!-- <div class="row">
+                              <div class="d-flex justify-content-end">
+                                <button mat-raised-button style="background-color: #263238; color: white">View Details</button>
+                              </div>
+                            </div> -->
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12 mt-3">
+                        <mat-card>
+                          <mat-card-content class="justify-content-center">
+                            <div class="row d-flex justify-content-end">
+                              <div class="col">JavaScript</div>
+                              <div class="col text-success">Enabled</div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col">
+                                Alarms created
+                                <br />
+                                <mat-progress-bar mode="buffer" [value]="progressValue" [bufferValue]="bufferValue" class="custom-progress-bar"></mat-progress-bar>
+                                <p class="d-flex justify-content-end">{{ progressValue }} / {{ bufferValue }}</p>
+                              </div>
+                            </div>
+                          
+                            <!-- <div class="row">
+                              <div class="d-flex justify-content-end">
+                                <button mat-raised-button style="background-color: #263238; color: white">View Details</button>
+                              </div>
+                            </div> -->
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                     
+                    </div>
+                    <div class="row col-lg-12 col-md-12 col-sm-12">
+                      <div class="col col-lg-6 col-md-6 col-sm-12 mt-3">
+                        <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <mat-card-header>
+                            <div class="row col-sm-12 col-lg-12 col-md-12">
+                              <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                                <h5>Transport hourly activity</h5>
+                              </div>
+                              <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-end ">
+                                <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" matTooltip="FullScreen" (click)="fullScrrenGraph1()"><mat-icon>aspect_ratio</mat-icon></button>
+                              </div>
+                            </div>
+                          </mat-card-header>
+                          <mat-card-content>
+                            <!-- edited full screen bar graph -->
+                            <div class="bar-container">
+                              <div class="row mt-3">
+                                <app-graph1></app-graph1>
+                              </div>
+                            </div>
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                      <div class="col col-lg-6 col-md-6 col-sm-12 mt-3">
+                        <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <mat-card-header>
+                            <div class="row col-sm-12 col-lg-12 col-md-12">
+                              <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                                <h5>Rule-engine hourly activity</h5>
+                              </div>
+                              <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-end">
+                                <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" matTooltip="FullScreen" (click)="fullScrrenGraph2()"><mat-icon>aspect_ratio</mat-icon></button>
+                              </div>
+                            </div>
+                          </mat-card-header>
+                          <mat-card-content>
+                            <div class="row mt-2">
+                              <div class="row data-charts mt-2">
+                                <app-graph2></app-graph2>
+                              </div>
+                            </div>
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                      <div class="col col-lg-12 col-md-12 col-sm-12 mt-2">
+                        <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <mat-card-header>
+                            <div class="row col-sm-12 col-lg-12 col-md-12">
+                              <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                                <h5>JavaScript functionality hourly activity</h5>
+                              </div>
+                              <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-end">
+                                <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" (click)="fullScrrenGraph3()"><mat-icon>aspect_ratio</mat-icon></button>
+                              </div>
+                            </div>
+                          </mat-card-header>
+                          <mat-card-content>
+                            <div class="row data-charts mt-2">
+                              <app-graph3></app-graph3>
+                            </div>
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="displayGraphFull1">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <mat-card-header>
+                <div class="row col-sm-12 col-lg-12 col-md-12">
+                  <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                    <h5>Transport hourly activity</h5>
+                  </div>
+                  <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-between">
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>menu</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>assessment</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" (click)="fullScrrenGraph1()">
+                      <mat-icon>aspect_ratio</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-card-header>
+              <mat-card-content>
+                <!-- edited full screen bar graph -->
+                <div class="bar-container">
+                  <div class="row mt-3">
+                    <app-graph1></app-graph1>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="displayGraphFull2">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <mat-card-header>
+                <div class="row col-sm-12 col-lg-12 col-md-12">
+                  <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                    <h5>Rule-engine hourly activity</h5>
+                  </div>
+                  <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-between">
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>menu</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>assessment</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" (click)="fullScrrenGraph2()">
+                      <mat-icon>aspect_ratio</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-card-header>
+              <mat-card-content>
+                <!-- edited full screen bar graph -->
+                <div class="bar-container">
+                  <div class="row mt-3">
+                    <app-graph2></app-graph2>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="displayGraphFull3">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <mat-card-header>
+                <div class="row col-sm-12 col-lg-12 col-md-12">
+                  <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                    <h5>JavaScript functionality hourly activity</h5>
+                  </div>
+                  <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-between">
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>menu</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>assessment</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" (click)="fullScrrenGraph3()">
+                      <mat-icon>aspect_ratio</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-card-header>
+              <mat-card-content>
+                <!-- edited full screen bar graph -->
+                <div class="bar-container">
+                  <div class="row mt-3">
+                    <app-graph3></app-graph3>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="displayGraphFull4">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <mat-card class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <mat-card-header>
+                <div class="row col-sm-12 col-lg-12 col-md-12">
+                  <div class="col-sm-12 col-lg-8 col-md-8 mx-auto">
+                    <h5>Alarms created hourly activity</h5>
+                  </div>
+                  <div class="col-sm-12 col-lg-4 col-md-4 d-flex justify-content-between">
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>menu</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon">
+                      <mat-icon>assessment</mat-icon>
+                    </button>
+                    <button mat-mini-fab style="background-color: #263238" aria-label="Example icon button with a menu icon" (click)="fullScrrenGraph4()">
+                      <mat-icon>aspect_ratio</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-card-header>
+              <mat-card-content>
+                <!-- edited full screen bar graph -->
+                <div class="bar-container">
+                  <div class="row mt-3">
+                    <!-- <app-graph4></app-graph4> -->
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    
+</div>
+
+

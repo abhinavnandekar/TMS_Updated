@@ -1,0 +1,39 @@
+.content{
+    padding: 1rem;
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
+}
+.button-row{
+margin-left: 2%;
+margin-top: 2%;
+justify-content: center;
+align-items: center;
+}
+tr:nth-child(even){
+  background-color: whitesmoke;
+}
+    
+tr:nth-child(odd){
+  background-color: whitesmoke;
+}
+    
+table {
+  width:100%;
+  background-color: #fa8888;  
+} 
+.add-user{
+  margin: 20px;
+}
+.button-row{
+  margin: 1%;   
+  justify-content: center;
+  align-items: center;
+}
+th{
+  text-align: center;
+  
+}
+
+td{
+  text-align: center;
+}

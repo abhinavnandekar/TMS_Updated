@@ -1,0 +1,58 @@
+<section class="section container-fluid">
+  <div class="row mb-3">
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <div class="d-flex">
+        <div class="notification-title">Notification</div>
+        <div class="ms-auto notification-title">Unread: {{ unreadCount }}</div>
+      </div>
+      <div class="notification-card-container">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let notification of notifications" class="mb-1"
+            [ngClass]="{'read': notification.isRead.data[0] === 1, 'unread': notification.isRead.data[0] === 0}">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ notification.sender }}
+              </mat-panel-title>
+              <mat-panel-description>
+                <div class="ms-auto">{{ notification.timestamp | date: 'medium' }}</div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="container">
+              <div>{{ notification.message }}</div>
+              <p>{{ notification.timestamp | date: 'medium' }}</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="d-flex">
+        <div class="ms-auto notification-title">Send Message</div>
+      </div>
+      <div class="fixed-card-container">
+        <mat-card class="fixed-card">
+          <mat-card-content>
+            <mat-form-field class="from-field">
+              <mat-label>Device Name</mat-label>
+              <mat-select required>
+                <mat-option>
+                  kaushal
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                Please select a device.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="from-field">
+              <mat-label>Start form here...</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" style="width:100%;">Send Message</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

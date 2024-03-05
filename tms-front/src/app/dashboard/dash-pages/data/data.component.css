@@ -1,0 +1,263 @@
+.data{
+	padding-top: 13vh;
+	padding-bottom: 5vh;
+}
+
+.data-charts{
+	height: 38vh;
+	width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.data-charts-2{
+	height: 77vh;
+	width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 550;
+  color: #3F51B5;
+}
+
+.refresh-button {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.online {
+	background: linear-gradient(to right, #3c9e55, #00FFFF);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+}
+
+.offline {
+  background: linear-gradient(to right, #808080, #A9A9A9);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+}
+
+.heating {
+  background: linear-gradient(to right, #FF0000, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+
+.panel-device-name {
+  background: linear-gradient(to right, #3F51B5, #125ee0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 1.2rem;
+	font-weight: 550;
+	text-align: left;
+}
+
+.panel-device-trigger{
+	background: linear-gradient(to right, #FF0000, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+	font-size: 1.2rem;
+	font-weight: 550;
+	text-align: right;
+}
+
+.panel-device-status{
+	font-weight: 500;
+	font-size: 5rem;
+	text-align: center;
+}
+
+.panel-device-time {
+	font-weight: 550;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+}
+
+
+
+.chart-container {
+  height: 35vh; /* Adjust the height of the chart container as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.chart-container-2 {
+  height: 77vh; /* Adjust the height of the chart container as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#donutChart {
+  width: 100%; /* Adjust the width of the chart element as needed */
+  max-width: 100%; /* Set a maximum width to limit the chart size */
+  margin: 0 auto; /* Center the chart horizontally within the container */
+}
+
+.filter-button {
+  position: fixed;
+  bottom: 50px;
+  right: 25px;
+  background-color: #3F51B5;
+  color: whitesmoke;
+}
+
+
+.temp{	
+	font-size: 1.2rem;
+	font-weight: 550;
+}
+
+.ryb-th-t{
+	background: linear-gradient(to right, #0572a1, #4291b3, #6598ad);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+
+.ryb-alert{
+	background: linear-gradient(to right, #eb4034, #d4857f, #ff0000);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+	
+.th-temp{
+	background: linear-gradient(to right, #eb4034, #d4857f, #ff0000);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+
+.th-hum{
+	background: linear-gradient(to right, #0572a1, #4291b3, #6598ad);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+
+.t{
+	background: linear-gradient(to right, #eb4034, #d4857f, #ff0000);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+	
+.ws{
+	background: linear-gradient(to right, #eb4034, #d4857f, #ff0000);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+
+.fs{
+	background: linear-gradient(to right, #eb4034, #d4857f, #ff0000);
+  -webkit-background-clip: text; /* For WebKit/Blink browsers like Chrome and Safari */
+  background-clip: text;
+  color: transparent; /* Make the text transparent */
+}
+
+.interval{
+	font-size: 1rem;
+	font-weight: 550;
+}
+
+
+@media(max-width:425px){
+	.data{
+		padding-top: 75px;
+		padding-bottom: 20px;
+	}
+	.data-charts{
+		height: auto;
+		width: 100%;
+	}
+}
+
+@media(min-width:425px) and (max-width:576px){
+	.data{
+		padding-top: 75px;
+		padding-bottom: 20px;
+	}
+	.data-charts{
+		height: auto;
+		width: 100%;
+	}
+}
+
+@media(min-width:576px) and (max-width:1024px){
+	.data{
+		padding-top: 75px;
+		padding-bottom: 20px;
+	}
+	.data-charts{
+		height: auto;
+		width: 100%;
+	}
+}
+
+/*@media(min-width:1024px) and (max-width:1440px){
+	.data{
+		padding-top: 75px;
+		padding-bottom: 20px;
+	}
+}*/
+
+@media screen and (max-height: 500px) {
+	.panel-title {
+		font-size: 14px;
+	}
+
+	.panel-device-name,
+	.panel-device-trigger {
+		font-size: 1rem;
+	}
+
+	.panel-device-status{
+		font-size: 1.5rem;
+	}
+
+	.panel-device-time{
+		font-size: 0.8rem;
+	}
+}
+
+/* Center the spinner using Flexbox */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Make the container take the full height of the card */
+}
+
+/* Adjust the size of the spinner */
+.custom-spinner {
+  width: 15px; /* Set your desired width */
+  height: 15px; /* Set your desired height */
+}

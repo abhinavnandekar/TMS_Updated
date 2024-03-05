@@ -1,0 +1,43 @@
+{
+  "name": "tms-back",
+  "version": "1.0.0",
+  "description": "Backend For the Temperature Monitoring System.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pm2 start app.js"
+  },
+  "author": "Kaushal Pohekar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.3",
+    "bcrypt": "^5.1.0",
+    "circular-json": "^0.5.9",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2",
+    "fast-csv": "^4.3.6",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "jsonexport": "^3.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "moment-timezone": "^0.5.43",
+    "mqtt": "^5.0.4",
+    "mssql": "^9.1.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.5",
+    "node-cache": "^5.1.2",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.5",
+    "os": "^0.1.2",
+    "socket.io": "^4.7.2",
+    "twilio": "^4.18.0",
+    "uuid": "^9.0.1",
+    "ws": "^8.13.0"
+  }
+}

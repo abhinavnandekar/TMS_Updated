@@ -1,0 +1,134 @@
+<!-- Outer Container -->
+<div *ngIf="saService.pageLoading"><app-page-loading></app-page-loading></div>
+<div *ngIf="!saService.pageLoading">
+  <div class="content">
+    <div class="card">
+      <div class="d-flex justify-content-between mt-2">
+        <div class="col-lg-4 col-md-4 col-sm-4 mt-3 mx-4">
+          <ng-container *ngIf="showSearchInput; else paragraphContent">
+        <div class="col-lg-12 col-md-12 col-sm-12 ">
+              <mat-form-field appearance="fill" >
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Enter name" #input>
+              </mat-form-field>
+            <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="hideSearchInput()"  matTooltip="close" >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          </ng-container>
+          <ng-template #paragraphContent>
+            <p class="text-heading">Audit logs</p>
+          </ng-template>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2 d-flex justify-content-end" *ngIf="!showSearchInput">
+      
+          <!-- <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="refreshData()" matTooltip="Refresh">
+            <mat-icon>refresh</mat-icon>
+          </button> -->
+          <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="toggleSearchInput()" matTooltip="Search device">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <section class="example-container ">
+        <table mat-table [dataSource]="dataSource" >
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Details</th>
+            <td mat-cell *matCellDef="let element">{{element.details}}</td>
+          </ng-container>
+      
+          <!-- Timestamp Column -->
+          <ng-container matColumnDef="entity_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>EntityName</th>
+            <td mat-cell *matCellDef="let element">{{element.entity_name }}</td>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="entity_type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>EntityType</th>
+            <td mat-cell *matCellDef="let element">{{element.entity_type }}</td>
+          </ng-container>
+          <!-- IP Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
+            <td mat-cell *matCellDef="let element">{{element.id }}</td>
+          </ng-container>
+      
+          <!-- Entity Type Column -->
+          <ng-container matColumnDef="ip">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>IP</th>
+            <td mat-cell *matCellDef="let element">{{element.ip }}</td>
+          </ng-container>
+      
+          <!-- Entity Name Column -->
+          <ng-container matColumnDef="request_type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>RequestType</th>
+            <td mat-cell *matCellDef="let element">{{element.request_type }}</td>
+          </ng-container>
+      
+          <!-- Username Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let element">{{element.status }}</td>
+          </ng-container>
+      
+          <!-- User Type Column -->
+          <ng-container matColumnDef="timestamp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Timestamp</th>
+            <td mat-cell *matCellDef="let element">{{element.timestamp }}</td>
+          </ng-container>
+      
+          <!-- Request Type Column -->
+          <ng-container matColumnDef="user_type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>UserType</th>
+            <td mat-cell *matCellDef="let element">{{element.user_type}}</td>
+          </ng-container>
+      
+          <!-- Status Column -->
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>UserName</th>
+            <td mat-cell *matCellDef="let element">{{element.username}}</td>
+          </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      </table>
+    </section>
+  <mat-paginator  [pageSize]="10" aria-label="Select page of GitHub search results"></mat-paginator>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

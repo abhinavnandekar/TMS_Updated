@@ -1,0 +1,143 @@
+<!-- Outer Container -->
+<div *ngIf="saService.pageLoading"><app-page-loading></app-page-loading></div>
+<div *ngIf="!saService.pageLoading">
+  <div class="content">
+    <div class="card">
+      <div class="d-flex justify-content-between mt-2">
+        <div class="col-lg-4 col-md-4 col-sm-4 mt-3 mx-4">
+          <ng-container *ngIf="showSearchInput; else paragraphContent">
+        <div class="col-lg-12 col-md-12 col-sm-12 ">
+              <mat-form-field appearance="fill" >
+                <mat-label>Search</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Enter name" #input>
+              </mat-form-field>
+            <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="hideSearchInput()"  matTooltip="close" >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          </ng-container>
+          <ng-template #paragraphContent>
+            <p class="text-heading">Alarms</p>
+          </ng-template>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2 d-flex justify-content-end" *ngIf="!showSearchInput">
+      
+          <!-- <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="refreshData()" matTooltip="Refresh">
+            <mat-icon>refresh</mat-icon>
+          </button> -->
+          <button mat-icon-button aria-label="Example icon button with a vertical three-dot icon" (click)="toggleSearchInput()" matTooltip="Search device">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <section class="example-container ">
+        <table mat-table [dataSource]="dataSource">
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="DeviceUID">
+            <th mat-header-cell *matHeaderCellDef> DeviceUID </th>
+            <td mat-cell *matCellDef="let element"> {{ element.DeviceUID }} </td>
+          </ng-container>
+
+          <!-- Created Time Column -->
+          <ng-container matColumnDef="TriggerValue">
+            <th mat-header-cell *matHeaderCellDef> Trigger Value </th>
+            <td mat-cell *matCellDef="let element"> {{ element.TriggerValue }} </td>
+          </ng-container>
+
+          <!-- Device Name Column -->
+          <ng-container matColumnDef="CompanyEmail">
+            <th mat-header-cell *matHeaderCellDef> CompanyEmail </th>
+            <td mat-cell *matCellDef="let element"> {{ element.CompanyEmail }} </td>
+          </ng-container>
+
+          <!-- Device IP Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{ element.status}} </td>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="timestamp">
+            <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+            <td mat-cell *matCellDef="let element"> {{ element.timestamp }} </td>
+          </ng-container>
+
+          <!-- Severity Column -->
+          <ng-container matColumnDef="company_name">
+            <th mat-header-cell *matHeaderCellDef> company_name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.company_name }} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="DeviceName">
+            <th mat-header-cell *matHeaderCellDef> DeviceName </th>
+            <td mat-cell *matCellDef="let element"> {{ element.DeviceName }} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> type </th>
+            <td mat-cell *matCellDef="let element"> {{ element.type }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef > Actions </th>
+            <!-- Inside your table -->
+      <td mat-cell *matCellDef="let element" >
+        <button mat-icon-button color="dark" (click)="openEditAlarmsDialog(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        </td>
+        </ng-container>
+
+        
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+    </section>
+  <mat-paginator  [pageSize]="10" aria-label="Select page of GitHub search results"></mat-paginator>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

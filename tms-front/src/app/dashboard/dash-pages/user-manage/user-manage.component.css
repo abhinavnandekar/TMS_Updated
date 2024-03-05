@@ -1,0 +1,48 @@
+.users {
+  padding-top: 13vh;
+  padding-bottom: 5vh;
+}
+
+.user-head{
+	font-size: 1.2rem;
+	font-weight: 550;
+	color: #3F51B5;
+}
+
+.user-text{
+  font-weight: 550;
+
+}
+
+.success{
+  color: green;
+}
+
+.online{
+	color: green;
+	font-weight: 550;
+}
+
+.offline{
+	color: red;
+	font-weight: 550;
+}
+
+.total-count {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 12px;
+  color: green;
+}
+
+.table-header{
+	position: relative;
+	z-index: -1;
+}
+td{
+  text-align: center;
+}
+th{
+  text-align: center;
+}

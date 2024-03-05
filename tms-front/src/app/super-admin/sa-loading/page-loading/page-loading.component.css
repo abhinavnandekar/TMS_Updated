@@ -1,0 +1,51 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 50%;
+    animation-name: blow-up;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+  }
+
+  .dot:nth-child(1) {
+    background-color: #ffcc00;
+    animation-delay: 0.3s;
+  }
+
+  .dot:nth-child(2) {
+    background-color: #ff6699;
+    animation-delay: 0.6s;
+  }
+
+  .dot:nth-child(3) {
+    background-color: #66ccff;
+    animation-delay: 0.9s;
+  }
+
+  .dot:nth-child(4) {
+    background-color: #99ff99;
+    animation-delay: 1.2s;
+  }
+
+  @keyframes blow-up {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
